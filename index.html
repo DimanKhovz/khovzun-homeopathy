@@ -310,21 +310,30 @@
 
         .hero-visual {
             position: relative;
+            max-width: 50%;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
         }
 
         .hero-frame {
             position: relative;
-            border-radius: var(--radius);
+            border-radius: 50%;
             overflow: hidden;
-            aspect-ratio: 4 / 5;
+            aspect-ratio: 1 / 1;
+            width: 100%;
             background: var(--sage-pale);
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 40px rgba(47, 69, 56, .18);
+            border: 5px solid var(--white);
         }
 
         .hero-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
             display: block;
         }
 
@@ -332,30 +341,30 @@
             content: "";
             position: absolute;
             inset: 0;
-            border: 1px solid rgba(255,255,255,.5);
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.4);
             pointer-events: none;
         }
 
         .hero-tag {
-            position: absolute;
-            left: -28px;
-            bottom: 40px;
+            position: static;
             background: var(--forest);
             color: #fff;
-            padding: 22px 26px;
-            border-radius: var(--radius);
+            padding: 12px 22px;
+            border-radius: 40px;
             font-family: var(--serif);
-            font-size: 14px;
-            line-height: 1.5;
-            max-width: 220px;
-            box-shadow: var(--shadow);
+            font-size: 13px;
+            line-height: 1.4;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(47, 69, 56, .22);
+            white-space: nowrap;
         }
 
         .hero-tag strong {
-            display: block;
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 4px;
+            display: inline;
+            font-size: 15px;
+            font-weight: 700;
+            margin-right: 5px;
         }
 
         @media (max-width: 900px) {
@@ -365,7 +374,10 @@
                 padding-bottom: 60px;
                 gap: 48px;
             }
-            .hero-tag { left: 16px; }
+            .hero-visual {
+                max-width: 260px;
+                margin: 0 auto;
+            }
         }
 
         /* ===================== О ДОКТОРЕ ===================== */
@@ -833,7 +845,7 @@
                 <div class="hero-copy reveal">
                     <div class="eyebrow">Классическая гомеопатия</div>
                     <h1>Лечение, которое слушает <em>весь организм</em>, а не только симптом</h1>
-                    <p class="subtitle">Галина Викторовна Ховзун — врач-гомеопат с 20-летней практикой по методу
+                    <p class="subtitle">Галина Викторовна Ховзун — врач-гомеопат с 34-летней практикой по методу
                         Джорджа Витулкаса. Подбор препарата индивидуально для вас.</p>
                     <div class="hero-actions">
                         <a href="#contacts" class="btn btn-clay">Записаться на приём</a>
@@ -844,7 +856,7 @@
                     <div class="hero-frame">
                         <img src="doctor.png" alt="Галина Ховзун — врач-гомеопат">
                     </div>
-                    <div class="hero-tag"><strong>20 лет</strong>практики классической гомеопатии</div>
+                    <div class="hero-tag"><strong>34 года</strong>практики классической гомеопатии</div>
                 </div>
             </div>
         </div>
@@ -878,7 +890,7 @@
                 <p>Галина Викторовна приветствует медицинскую диагностику и лабораторные анализы, причин тут
                     несколько: во-первых, для доказательства действия гомеопатии, во-вторых, иногда это единственный
                     ориентир, и, в-третьих, это помогает увидеть глубину заболевания и прогнозировать.</p>
-                <p>Практический опыт лечения гомеопатией — 20 лет.</p>
+                <p>Практический опыт лечения гомеопатией — 34 года.</p>
             </div>
         </div>
     </section>
