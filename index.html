@@ -310,7 +310,7 @@
 
         .hero-visual {
             position: relative;
-            max-width: 50%;
+            max-width: 62.5%;
             margin-left: auto;
             display: flex;
             flex-direction: column;
@@ -350,21 +350,54 @@
             position: static;
             background: var(--forest);
             color: #fff;
-            padding: 12px 22px;
-            border-radius: 40px;
+            padding: 16px 28px 18px;
+            border-radius: 16px;
             font-family: var(--serif);
-            font-size: 13px;
-            line-height: 1.4;
             text-align: center;
-            box-shadow: 0 4px 16px rgba(47, 69, 56, .22);
-            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(47, 69, 56, .25);
+            cursor: default;
+            transition: box-shadow .35s ease, background .35s ease;
+        }
+
+        .hero-tag:hover {
+            background: var(--forest-deep);
+            box-shadow: 0 8px 32px rgba(47, 69, 56, .38);
         }
 
         .hero-tag strong {
-            display: inline;
-            font-size: 15px;
-            font-weight: 700;
-            margin-right: 5px;
+            display: block;
+            font-size: 38px;
+            font-weight: 600;
+            letter-spacing: -.01em;
+            line-height: 1.1;
+            margin-bottom: 5px;
+            color: var(--clay);
+            transition: font-size .35s cubic-bezier(.34, 1.56, .64, 1),
+                        color .35s ease,
+                        letter-spacing .35s ease;
+        }
+
+        .hero-tag:hover strong {
+            font-size: 54px;
+            color: #fff;
+            letter-spacing: .02em;
+        }
+
+        .hero-tag span {
+            display: block;
+            font-size: 13px;
+            font-family: var(--sans);
+            font-weight: 400;
+            color: rgba(255,255,255,.82);
+            line-height: 1.45;
+            letter-spacing: .01em;
+            transition: transform .35s cubic-bezier(.34, 1.56, .64, 1),
+                        color .35s ease;
+        }
+
+        .hero-tag:hover span {
+            transform: translateY(6px);
+            color: var(--clay);
         }
 
         @media (max-width: 900px) {
@@ -706,6 +739,106 @@
             font-size: 16px;
         }
 
+        /* ===================== БЛОГ ===================== */
+        .blog { background: var(--cream-deep); }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow .25s, transform .25s;
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-4px);
+        }
+
+        .blog-card-top {
+            background: var(--sage-pale);
+            padding: 28px 28px 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .blog-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--clay-deep);
+            margin-bottom: 12px;
+        }
+
+        .blog-card h3 {
+            font-size: 18px;
+            line-height: 1.35;
+            font-weight: 500;
+            color: var(--forest);
+        }
+
+        .blog-card-body {
+            padding: 22px 28px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .blog-card-body p {
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: var(--ink-soft);
+        }
+
+        .blog-point {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .blog-point-num {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--sage-pale);
+            color: var(--clay-deep);
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .blog-point p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .blog-source {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+            font-size: 12px;
+            color: var(--sage);
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+
         /* ===================== КОНТАКТЫ ===================== */
         .contacts {
             background: var(--cream-deep);
@@ -856,7 +989,10 @@
                     <div class="hero-frame">
                         <img src="doctor.png" alt="Галина Ховзун — врач-гомеопат">
                     </div>
-                    <div class="hero-tag"><strong>34 года</strong>практики классической гомеопатии</div>
+                    <div class="hero-tag">
+                        <strong>34 года</strong>
+                        <span>практики классической<br>гомеопатии</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1057,20 +1193,6 @@
                     </div>
                     <div class="p-price">1 000 ₽</div>
                 </div>
-                <div class="price-row">
-                    <div>
-                        <div class="p-name">Абонемент (месяц)</div>
-                        <div class="p-note">на одного пациента</div>
-                    </div>
-                    <div class="p-price">5 000 ₽</div>
-                </div>
-                <div class="price-row">
-                    <div>
-                        <div class="p-name">Составление плана по питанию и физ. активности</div>
-                        <div class="p-note">на одного пациента</div>
-                    </div>
-                    <div class="p-price">7 000 ₽</div>
-                </div>
             </div>
 
             <div class="price-buttons reveal">
@@ -1105,10 +1227,95 @@
                 <h2>Полезная информация</h2>
             </div>
             <div class="article reveal">
-                <h3>The Continuum...</h3>
-                <!-- ====== СЮДА ВСТАВИТЬ: текст статьи ====== -->
-                <p>ТЕКСТ_ЗАГЛУШКА: текст полезной статьи. Можно добавить несколько таких блоков &lt;div
-                    class="article"&gt;.</p>
+                <h3>The Continuum of a Unified Theory of Diseases</h3>
+                <p>Витулкас предлагает единое объяснение развития всех хронических заболеваний — <em>континуум болезней</em>. В отличие от классической медицины, где болезни рассматриваются как отдельные диагнозы, он считает, что все болезни связаны между собой и развиваются поэтапно в зависимости от жизненных сил организма и проведённого лечения.</p>
+                <p>Болезни — не отдельные явления, а звенья одной цепи. Хронические заболевания формируются в результате подавления острых болезней. Истинное исцеление происходит в обратном порядке: от глубинных симптомов к поверхностным, изнутри наружу — это <em>Закон Геринга</em>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= БЛОГ ========================= -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-head center reveal">
+                <div class="eyebrow">Статьи по мотивам Витулкаса</div>
+                <h2>Размышления о гомеопатии</h2>
+            </div>
+
+            <div class="blog-grid">
+
+                <!-- Карточка 1 -->
+                <div class="blog-card reveal">
+                    <div class="blog-card-top">
+                        <span class="blog-tag">Теория</span>
+                        <h3>Континуум болезней: единая теория</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Витулкас предлагает единое объяснение хронических заболеваний — это не отдельные диагнозы, а звенья одной цепи, зависящие от жизненных сил организма.</p>
+                        <div class="blog-point">
+                            <span class="blog-point-num">1</span>
+                            <p>Хронические болезни возникают при подавлении острых — антибиотиками, вакцинацией, неправильным лечением.</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">2</span>
+                            <p>Чем выше уровень жизненной энергии — тем сильнее реакция на острые болезни и легче выздоровление.</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">3</span>
+                            <p>Истинное исцеление идёт в обратном порядке: от хронического к острому, изнутри наружу — Закон Геринга.</p>
+                        </div>
+                        <p class="blog-source">По материалам: «The Continuum of a Unified Theory of Diseases», Дж. Витулкас</p>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="blog-card reveal">
+                    <div class="blog-card-top">
+                        <span class="blog-tag">Философия</span>
+                        <h3>Может ли нежная наука выжить в жестоком мире?</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Гомеопатия — мягкая, деликатная, будто шелковый платок среди камней медицинских догм. Вот уже двести лет она возвращает человеку гармонию тела и души.</p>
+                        <div class="blog-point">
+                            <span class="blog-point-num">1</span>
+                            <p>Успехи гомеопатии в лечении «безнадёжных» хронических заболеваний остаются в тени — парадокс, требующий объяснения.</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">2</span>
+                            <p>В мире быстрых решений часы размышлений гомеопата уступают «универсальной таблетке от всего».</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">3</span>
+                            <p>Гомеопатия продолжает тихо помогать тем, кому традиционная медицина уже не в силах помочь.</p>
+                        </div>
+                        <p class="blog-source">По материалам: «Может ли гомеопатия выжить в мире насилия?», Дж. Витулкас, Университет Эгейского моря</p>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="blog-card reveal">
+                    <div class="blog-card-top">
+                        <span class="blog-tag">Практика</span>
+                        <h3>Невидимые преграды на дороге к выздоровлению</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Бывает: найдено идеальное средство, подобрана точная крупица — а исцеления всё нет. Перед врачом проступает невидимая ткань преград, опутавших душу и тело пациента.</p>
+                        <div class="blog-point">
+                            <span class="blog-point-num">1</span>
+                            <p>Физические блоки: грыжи, опухоли, камни, следы прошлых лекарств — всё, что не даёт лечению проникнуть вглубь.</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">2</span>
+                            <p>Эмоциональные блоки: страх, стыд, неудовлетворённость, замкнутый круг семейных драм и невысказанная боль.</p>
+                        </div>
+                        <div class="blog-point">
+                            <span class="blog-point-num">3</span>
+                            <p>Лечит не только средство — живая связь между душой и телом. Пока не растают внутренние льдины, невозможно выправить гармонию.</p>
+                        </div>
+                        <p class="blog-source">По материалам: «Факторы, препятствующие гомеопатическому лечению», Дж. Витулкас (1995)</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1217,6 +1424,60 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         });
+
+        // ── Тень фото следует за курсором ────────────────────────────────────
+        const heroFrame = document.querySelector('.hero-frame');
+
+        if (heroFrame) {
+            const MAX_OFFSET = 28;   // максимальный сдвиг тени в px
+            const BLUR      = 48;    // размытие
+            const SPREAD    = 4;     // растекание
+            const COLOR     = 'rgba(47, 69, 56, .30)';
+            const COLOR2    = 'rgba(191, 122, 85, .18)'; // тёплый отблеск
+
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            let raf;
+
+            // плавная интерполяция (lerp)
+            function lerp(a, b, t) { return a + (b - a) * t; }
+
+            function animate() {
+                currentX = lerp(currentX, targetX, 0.08);
+                currentY = lerp(currentY, targetY, 0.08);
+
+                const cx = +currentX.toFixed(2);
+                const cy = +currentY.toFixed(2);
+
+                heroFrame.style.boxShadow = [
+                    `${cx}px ${cy}px ${BLUR}px ${SPREAD}px ${COLOR}`,
+                    `${-cx * .4}px ${-cy * .4}px ${BLUR * .6}px 0 ${COLOR2}`
+                ].join(', ');
+
+                raf = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                const rect = heroFrame.getBoundingClientRect();
+                const cx = rect.left + rect.width  / 2;
+                const cy = rect.top  + rect.height / 2;
+
+                // нормализуем от −1 до 1 по всему окну
+                const nx = (e.clientX - cx) / (window.innerWidth  / 2);
+                const ny = (e.clientY - cy) / (window.innerHeight / 2);
+
+                targetX = nx * MAX_OFFSET;
+                targetY = ny * MAX_OFFSET;
+            });
+
+            // возврат тени в центр когда курсор уходит
+            document.addEventListener('mouseleave', () => {
+                targetX = 0;
+                targetY = 0;
+            });
+
+            animate();
+        }
     </script>
 
 </body>
