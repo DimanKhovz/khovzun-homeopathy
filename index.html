@@ -944,62 +944,6 @@
             .blog-grid { grid-template-columns: 1fr; }
         }
 
-        /* ===================== ЧАСТЫЕ ВОПРОСЫ ===================== */
-        .faq { background: var(--white); }
-
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .faq-item {
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            background: var(--cream);
-            overflow: hidden;
-        }
-
-        .faq-item summary {
-            list-style: none;
-            cursor: pointer;
-            padding: 24px 56px 24px 28px;
-            position: relative;
-            font-family: var(--serif);
-            font-size: 18px;
-            color: var(--forest);
-            font-weight: 500;
-        }
-
-        .faq-item summary::-webkit-details-marker { display: none; }
-
-        .faq-item summary::after {
-            content: "+";
-            position: absolute;
-            right: 26px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            font-weight: 400;
-            color: var(--clay-deep);
-            transition: transform .3s ease;
-        }
-
-        .faq-item[open] summary::after {
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        .faq-item[open] summary {
-            border-bottom: 1px solid var(--line);
-        }
-
-        .faq-item .faq-answer {
-            padding: 4px 28px 26px;
-            font-size: 15px;
-            line-height: 1.75;
-            color: var(--ink-soft);
-        }
-
         /* ===================== КОНТАКТЫ ===================== */
         .contacts {
             background: var(--cream-deep);
@@ -1610,30 +1554,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================= ЧАСТЫЕ ВОПРОСЫ ========================= -->
-    <section class="faq">
-        <div class="container wrap-narrow">
-            <div class="section-head center reveal">
-                <div class="eyebrow">Частые вопросы</div>
-                <h2>Что нужно знать перед началом</h2>
-            </div>
-            <div class="faq-list reveal">
-                <details class="faq-item">
-                    <summary>Сколько времени займёт лечение?</summary>
-                    <div class="faq-answer">Ориентировочно: на каждый год существования вашей хронической болезни потребуется примерно месяц гомеопатического лечения.</div>
-                </details>
-                <details class="faq-item">
-                    <summary>Можно ли совмещать гомеопатию с обычными таблетками?</summary>
-                    <div class="faq-answer">Пациентам следует максимально воздерживаться от регулярного приёма аллопатических лекарств, так как они могут свести на нет действие гомеопатического препарата. О любых принимаемых средствах обязательно сообщайте врачу.</div>
-                </details>
-                <details class="faq-item">
-                    <summary>Почему в начале лечения мне может стать хуже?</summary>
-                    <div class="faq-answer">Это состояние называется «целебным кризисом». Усиление жизненной силы может привести к временному обострению симптомов на несколько дней — это благоприятный знак, говорящий о том, что организм начал бороться с болезнью. Главное — не паниковать и не пытаться «сбить» обострение химическими лекарствами.</div>
-                </details>
             </div>
         </div>
     </section>
