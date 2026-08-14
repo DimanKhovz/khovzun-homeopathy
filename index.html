@@ -475,14 +475,63 @@
             color: var(--ink-soft);
         }
 
-        .philo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+        .philosophy {
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (max-width: 760px) {
-            .philo-grid { grid-template-columns: 1fr; }
+        .philo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* Декоративные иллюстрации по бокам (широкие экраны) */
+        .philo-decor {
+            position: absolute;
+            width: 210px;
+            pointer-events: none;
+            opacity: .92;
+            display: none;
+        }
+
+        .philo-decor img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform-origin: bottom center;
+            animation: sprig-sway 8s ease-in-out infinite;
+        }
+
+        .philo-decor.left {
+            left: 2%;
+            top: 4%;
+        }
+
+        .philo-decor.right {
+            right: 6%;
+            top: 46%;
+            width: 250px;
+        }
+
+        .philo-decor.right img {
+            animation-duration: 9s;
+            animation-delay: -4s;
+        }
+
+        @keyframes sprig-sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        @media (min-width: 1300px) {
+            .philo-decor { display: block; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .philo-decor img { animation: none; }
         }
 
         /* ===================== О ДОКТОРЕ ===================== */
@@ -1215,9 +1264,16 @@
 
     <!-- ========================= ФИЛОСОФИЯ МЕТОДА ========================= -->
     <section class="philosophy">
+        <div class="philo-decor left" aria-hidden="true">
+            <img src="12.png" alt="">
+        </div>
+        <div class="philo-decor right" aria-hidden="true">
+            <img src="13.png" alt="">
+        </div>
         <div class="container">
             <div class="section-head center reveal">
                 <div class="eyebrow">Наш подход</div>
+
                 <h2>Четыре принципа, на которых строится лечение</h2>
             </div>
 
