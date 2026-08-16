@@ -439,6 +439,79 @@
             }
         }
 
+        /* ===================== ВИДЕО-ОБРАЩЕНИЕ ===================== */
+        .video-intro { padding-top: 0; }
+
+        .video-frame {
+            position: relative;
+            max-width: 860px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--forest-deep);
+            box-shadow: var(--shadow);
+            border: 6px solid var(--white);
+        }
+
+        .video-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #000;
+        }
+
+        .video-play {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: var(--clay);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(43, 42, 36, .35);
+            transition: background .25s ease, transform .25s ease, opacity .3s ease, visibility .3s ease;
+        }
+
+        .video-play svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+            margin-left: 4px;
+        }
+
+        .video-play:hover {
+            background: var(--clay-deep);
+            transform: scale(1.06);
+        }
+
+        .video-frame.playing .video-play {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @media (max-width: 700px) {
+            .video-frame {
+                border-radius: 14px;
+                border-width: 4px;
+            }
+            .video-play {
+                width: 60px;
+                height: 60px;
+            }
+            .video-play svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
         /* ===================== ФИЛОСОФИЯ МЕТОДА ===================== */
         .philosophy { background: var(--cream-deep); }
 
@@ -1283,6 +1356,26 @@
         </div>
     </section>
 
+    <!-- ========================= ВИДЕО-ОБРАЩЕНИЕ ========================= -->
+    <section class="video-intro">
+        <div class="container">
+            <div class="section-head center reveal">
+                <div class="eyebrow">Личное обращение</div>
+                <h2>Почему гомеопатия — осознанный выбор</h2>
+                <p>Галина Ховзун о том, зачем нужна классическая гомеопатия и почему тело способно исцелить себя само</p>
+            </div>
+            <div class="video-frame reveal" id="video-frame">
+                <video id="intro-video" poster="doctor-video-poster.jpg" playsinline controls preload="metadata">
+                    <source src="doctor-video.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+                <button class="video-play" id="video-play" aria-label="Воспроизвести видео">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- ========================= ФИЛОСОФИЯ МЕТОДА ========================= -->
     <section class="philosophy">
         <div class="philo-decor left" aria-hidden="true">
@@ -1883,6 +1976,28 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         });
+
+        // ── Видео-обращение: кастомная кнопка play + пауза при уходе со экрана ──
+        (() => {
+            const frame = document.getElementById('video-frame');
+            const video = document.getElementById('intro-video');
+            const playBtn = document.getElementById('video-play');
+            if (!frame || !video || !playBtn) return;
+
+            playBtn.addEventListener('click', () => video.play());
+            video.addEventListener('play', () => frame.classList.add('playing'));
+            video.addEventListener('pause', () => frame.classList.remove('playing'));
+            video.addEventListener('ended', () => frame.classList.remove('playing'));
+
+            if ('IntersectionObserver' in window) {
+                const videoIo = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting && !video.paused) video.pause();
+                    });
+                }, { threshold: .15 });
+                videoIo.observe(frame);
+            }
+        })();
 
         // ── Тень фото следует за курсором ────────────────────────────────────
         const heroFrame = document.querySelector('.hero-frame');
